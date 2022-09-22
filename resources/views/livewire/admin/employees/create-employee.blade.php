@@ -10,7 +10,7 @@
 
             <form wire:submit.prevent="store">
                 @csrf
-                <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg border border-gray-200">
+                <div class="bg-white overflow-hidden shadow sm:rounded-lg border border-gray-200">
                     <div class="mt-10 sm:mt-0">
                         <div class="md:grid md:grid-cols-3 md:gap-6">
                             <div class="md:col-span-1 p-5">
@@ -80,7 +80,7 @@
                         <div class="border-t border-gray-200"></div>
                     </div>
                 </div>
-                <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg border border-gray-200">
+                <div class="bg-white overflow-hidden shadow sm:rounded-lg border border-gray-200">
                     <div class="mt-10 sm:mt-0">
                         <div class="md:grid md:grid-cols-3 md:gap-6">
                             <div class="md:col-span-1 p-5">
@@ -153,7 +153,54 @@
                         <div class="border-t border-gray-200"></div>
                     </div>
                 </div>
-                <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg border border-gray-200">
+                <div class="bg-white overflow-hidden shadow sm:rounded-lg border border-gray-200">
+                    <div class="md:grid md:grid-cols-3 md:gap-6 ">
+                        <div class="md:col-span-1 p-5">
+                            <div  class="px-4 sm:px-0">
+                                <h3 class="text-lg font-medium leading-6 text-gray-900">Employee status</h3>
+                                <p class="mt-1 text-sm text-gray-600">Role and team must match the employee's real status in the
+                                    company.</p>
+                            </div>
+                        </div>
+                        <div class="mt-5 md:col-span-2 md:mt-0">
+
+                            <div class="overflow-hidden shadow sm:rounded-md">
+                                <div class="bg-white px-4 py-5 sm:p-6">
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6">
+                                            <label for="role" class="block text-sm font-medium text-gray-700"> Role <span
+                                                    class="text-red-600">*</span></label>
+                                            <select wire:model="role" id="role"  class="mt-1 block w-full rounded-md border border-gray-300
+                                        bg-white
+                                        py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                                @foreach($roles as $role)
+                                                    <option value="{{$role->name}}"> {{$role->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-span-6">
+                                            <label for="team" class="block text-sm font-medium text-gray-700"> Team <span
+                                                    class="text-red-600">*</span></label>
+                                            <select wire:model="team" id="team"  class="mt-1 block w-full rounded-md border border-gray-300
+                                        bg-white
+                                        py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                                @foreach($teams as $team)
+                                                    <option value="{{$team->id}}"> {{$team->name}} Team</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden sm:block" aria-hidden="true">
+                    <div class="py-5">
+                        <div class="border-t border-gray-200"></div>
+                    </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow sm:rounded-lg border border-gray-200">
                     <div class="md:grid md:grid-cols-3 md:gap-6 ">
                         <div class="md:col-span-1 p-5">
                             <div  class="px-4 sm:px-0">
@@ -189,79 +236,6 @@
                     </div>
                 </div>
 
-                <div class="hidden sm:block" aria-hidden="true">
-                    <div class="py-5">
-                        <div class="border-t border-gray-200"></div>
-                    </div>
-                </div>
-
-                <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg border border-gray-200">
-                    <div class="md:grid md:grid-cols-3 md:gap-6 ">
-                        <div class="md:col-span-1 p-5">
-                            <div  class="px-4 sm:px-0">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900">Role</h3>
-                                <p class="mt-1 text-sm text-gray-600"></p>
-                            </div>
-                        </div>
-                        <div class="mt-5 md:col-span-2 md:mt-0">
-
-                            <div class="overflow-hidden shadow sm:rounded-md">
-                                <div class="bg-white px-4 py-5 sm:p-6">
-                                    <div class="grid grid-cols-6 gap-6">
-                                        <div class="col-span-6">
-                                            <label for="role" class="block text-sm font-medium text-gray-700"> Role <span
-                                                    class="text-red-600">*</span></label>
-                                            <select wire:model="role" id="role"  class="mt-1 block w-full rounded-md border border-gray-300
-                                        bg-white
-                                        py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                                                @foreach(\Spatie\Permission\Models\Role::all() as $role)
-                                                    <option value="{{$role->name}}"> {{$role->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hidden sm:block" aria-hidden="true">
-                    <div class="py-5">
-                        <div class="border-t border-gray-200"></div>
-                    </div>
-                </div>
-
-                <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg border border-gray-200">
-                    <div class="md:grid md:grid-cols-3 md:gap-6 ">
-                        <div class="md:col-span-1 p-5">
-                            <div  class="px-4 sm:px-0">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900">Team</h3>
-                                <p class="mt-1 text-sm text-gray-600"></p>
-                            </div>
-                        </div>
-                        <div class="mt-5 md:col-span-2 md:mt-0">
-
-                            <div class="overflow-hidden shadow sm:rounded-md">
-                                <div class="bg-white px-4 py-5 sm:p-6">
-                                    <div class="grid grid-cols-6 gap-6">
-                                        <div class="col-span-6">
-                                            <label for="team" class="block text-sm font-medium text-gray-700"> Team <span
-                                                    class="text-red-600">*</span></label>
-                                            <select wire:model="team" id="team"  class="mt-1 block w-full rounded-md border border-gray-300
-                                        bg-white
-                                        py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                                                @foreach(\App\Models\Team::all() as $team)
-                                                    <option value="{{$team->id}}"> {{$team->name}} Team</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="flex justify-end mt-5">
                     <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-700 py-2 text-sm px-4 font-semibold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2
                     focus:ring-indigo-500

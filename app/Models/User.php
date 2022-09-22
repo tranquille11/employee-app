@@ -34,7 +34,7 @@ class User extends Authenticatable implements HasMedia
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone_number'
+        'name', 'email', 'password', 'phone_number', 'phone', 'talkdesk_name', 'gorgias_name'
     ];
 
     /**
@@ -94,7 +94,7 @@ class User extends Authenticatable implements HasMedia
         return $search
             ? $query->where('name', 'like', '%'.$search.'%')
                     ->orWhere('email', 'like', '%'.$search.'%')
-                    ->orWhere('phone_number', 'like', '%'.$search.'%')
+                    ->orWhere('phone', 'like', '%'.$search.'%')
             : $this;
     }
 

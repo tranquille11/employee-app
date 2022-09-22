@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Admin\Employees;
 
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 use Spatie\Tags\Tag;
 
 class CreateEmployee extends Component
@@ -38,6 +40,8 @@ class CreateEmployee extends Component
     public $governmentId;
     public $resume;
 
+    public $roles;
+    public $teams;
 
     protected $rules = [
         'name' => 'required',
@@ -56,7 +60,6 @@ class CreateEmployee extends Component
 
     public function render()
     {
-
         return view('livewire.admin.employees.create-employee')->extends('layouts.app');
     }
 
@@ -70,6 +73,8 @@ class CreateEmployee extends Component
             'tags' => collect([]),
             ]);
 
+        $this->teams = Team::orderBy('name')->get();
+        $this->roles = Role::orderBy('name')->get();
     }
 
 

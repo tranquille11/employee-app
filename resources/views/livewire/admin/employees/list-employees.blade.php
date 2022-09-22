@@ -4,10 +4,10 @@
             <span class="text-2xl font-extrabold self-end"> Employees </span>
         </div>
         <div>
-            <button type="button" class="inline-block px-7 py-3 bg-black text-white text-sm font-semibold leading-snug uppercase shadow-md
-             hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-700
+            <button type="button" class="inline-block px-7 py-3 bg-indigo-700 rounded-md text-white text-sm font-bold leading-snug uppercase shadow-md
+             hover:bg-indigo-800 hover:shadow-lg focus:bg-indigo-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-800
              active:shadow-lg transition duration-150 ease-in-out">
-                <a href="{{route('employees.create')}}"> New Employee </a>
+                <a href="{{route('employees.create')}}"> Create </a>
             </button>
         </div>
     </div>
@@ -136,33 +136,33 @@
                                         $users->count() > 0?
                                          'checked' : ''}}  />
                                 </th>
-                                <th scope="col" class="text-xs font-semibold text-gray-900 py-2">
+                                <th scope="col" class="text-xs font-semibold text-indigo-700 py-2 px-4">
 
                                 </th>
-                                <th scope="col" class="text-xs font-semibold text-gray-900 py-2 px-3">
+                                <th scope="col" class="text-xs font-semibold text-indigo-900 py-2 px-4">
                                     Name
                                 </th>
-                                <th scope="col" class="text-xs font-semibold text-gray-900 py-2">
+                                <th scope="col" class="text-xs font-semibold text-indigo-900 py-2 px-4">
                                     Phone
                                 </th>
 
-                                <th scope="col" class="text-xs font-semibold text-gray-900  py-2">
+                                <th scope="col" class="text-xs font-semibold text-indigo-900 py-2 px-4">
                                     Role
                                 </th>
-                                <th scope="col" class="text-xs font-semibold text-gray-900  py-2">
+                                <th scope="col" class="text-xs font-semibold text-indigo-900  py-2 px-4">
                                     Tags
                                 </th>
-                                <th scope="col" class="text-xs font-semibold text-gray-900 py-2">
+                                <th scope="col" class="text-xs font-semibold text-indigo-900 py-2 px-4">
                                     Team
                                 </th>
-                                <th scope="col" class="text-xs font-semibold text-gray-900  py-2">
-                                    Date
+                                <th scope="col" class="text-xs font-semibold text-indigo-900  py-2 px-4">
+                                    Created
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
                             @forelse($users as $user)
-                                <tr class="bg-white border-b  {{$this->selectedUsers->find($user) ? 'bg-gray-100' : ''}}">
+                                <tr class="bg-white border-b  {{$this->selectedUsers->find($user) ? 'bg-gray-50' : ''}}">
                                     <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                                         <div class="form-check">
                                             <input wire:click="addUserToBulkAction({{$user}})"
@@ -176,41 +176,43 @@
                                     </td>
                                     <td class="text-left">
                                         <span class="text-xs inline-block py-1 px-2.5 leading-none whitespace-nowrap align-baseline
-                                        font-bold {{ $user->trashed() ? 'bg-gray-200 text-gray-700' : 'bg-green-500 text-white' }} rounded">
+                                        font-bold {{ $user->trashed() ? 'bg-gray-100 text-gray-800' : 'bg-green-100
+                                        text-green-800'
+                                        }} rounded-xl">
                                             {{ $user->trashed() ? 'Disabled' : "Active" }}
                                         </span>
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light py-1 whitespace-nowrap px-3">
-                                        <a href="#!" class="hover:text-blue-700 transition duration-300 ease-in-out">
+                                    <td class="text-sm text-gray-900 font-light py-1 whitespace-nowrap px-4">
+                                        <a href="#!" class="hover:text-indigo-900 transition duration-300 ease-in-out">
                                             <div><span class="font-semibold">{{$user->name}}</span></div>
                                             <div><span>{{$user->email}}</span></div>
                                         </a>
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light py-1 whitespace-nowrap ">
-                                        <span> {{$user->phone_number}} </span>
+                                    <td class="text-sm text-gray-900 font-light py-1 whitespace-nowrap px-4">
+                                        <span> {{$user->phone}} </span>
                                     </td>
 
-                                    <td class="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
-                                        <span> Representative </span>
+                                    <td class="text-sm text-gray-900 font-light py-2 px-4 whitespace-nowrap">
+                                        <span> {{$user->roles->first()->name}} </span>
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light  py-2 whitespace-nowrap">
+                                    <td class="py-2 px-4 whitespace-nowrap">
                                     <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline
-                                    font-bold bg-blue-600 text-white rounded">
+                                    font-semibold bg-gray-100 text-gray-800 rounded">
                                        english
                                     </span>
                                         <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline
-                                    font-bold bg-blue-600 text-white rounded">
+                                    font-semibold bg-gray-100 text-gray-800 rounded">
                                        spanish
                                     </span>
                                         <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline
-                                    font-bold bg-blue-600 text-white rounded">
+                                    font-semibold bg-gray-100 text-gray-800 rounded">
                                             schedule::other-brands
                                     </span>
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light py-2 whitespace-nowrap">
+                                    <td class="text-sm text-gray-900 font-light py-2 px-4 whitespace-nowrap">
                                         steve madden
                                     </td>
-                                    <td class="text-sm text-gray-900 font-light  py-2 whitespace-nowrap">
+                                    <td class="text-sm text-gray-900 font-light py-2 px-4 whitespace-nowrap">
                                         {{ $user->created_at->format('F j, Y  g:i A')  }}
                                     </td>
                                 </tr>
